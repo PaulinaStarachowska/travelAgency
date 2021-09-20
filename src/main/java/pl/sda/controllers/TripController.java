@@ -21,7 +21,7 @@ public class TripController {
         this.tripService = tripService;
     }
 
-    @GetMapping("/add") // http://localhost:8080/book/add
+    @GetMapping("/add")
     public String addTrip(@ModelAttribute("trip")Trip trip) {
         return "/trip_form";
     }
