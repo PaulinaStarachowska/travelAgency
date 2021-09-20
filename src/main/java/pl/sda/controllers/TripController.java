@@ -4,9 +4,11 @@ package pl.sda.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import pl.sda.model.Trip;
 import pl.sda.repository.TripRepository;
 import pl.sda.service.TripService;
 
@@ -17,6 +19,11 @@ public class TripController {
 
     public TripController(TripService tripService) {
         this.tripService = tripService;
+    }
+
+    @GetMapping("/add") // http://localhost:8080/book/add
+    public String addTrip(@ModelAttribute("trip")Trip trip) {
+        return "/trip_form";
     }
 
     @GetMapping("/all")
