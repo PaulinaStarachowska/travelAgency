@@ -25,7 +25,7 @@ public class TripController {
         modelAndView.addObject("trips", tripService.getAll());
         return modelAndView;
     }
-    @GetMapping("/trips/{tripId}")
+    @GetMapping("/{tripId}")
     public ModelAndView tripPage(@PathVariable Integer tripId) {
         ModelAndView modelAndView = new ModelAndView("trip_page");
         modelAndView.addObject("trip", tripService.getById(tripId));
