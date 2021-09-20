@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Trip list</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Kraj</th>
+        <th>Miasto</th>
+        <th>Nazwa Hotelu</th>
+        <th>Wylot</th>
+        <th>Powrót</th>
+        <th>Cena</th>
+    </tr>
+    <tr th:each="trip: ${trips}">
+        <td th:text="${trip.id}"></td>
+        <td th:text="${trip.country}"></td>
+        <td th:text="${trip.city}"></td>
+        <td th:text="${trip.hotelName}"></td>
+        <td th:text="${trip.onboarding}"></td>
+        <td th:text="${trip.offboarding}"></td>
+        <td th:text="${trip.price}"></td>
+    </tr>
+</table>
+
+</body>
+</html>

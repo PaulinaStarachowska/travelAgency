@@ -1,11 +1,12 @@
 package pl.sda.service.impl;
 
+import org.springframework.stereotype.Service;
 import pl.sda.model.Trip;
 import pl.sda.repository.TripRepository;
 import pl.sda.service.TripService;
 
 import java.util.List;
-
+@Service
 public class TripServiceImpl implements TripService {
 
     private final TripRepository tripRepository;
