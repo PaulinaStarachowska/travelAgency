@@ -26,7 +26,6 @@ public class User {
     private String userName;
 
     private String password;
-    // nie weim co oznacza to type
     private String type;
 
     // i tu zakładam foreginkey w przyszłości, do tripa z @ One to many ?

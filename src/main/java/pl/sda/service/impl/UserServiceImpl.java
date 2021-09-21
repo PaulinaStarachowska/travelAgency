@@ -11,7 +11,6 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
-    //final musiałem skasować bo mi wywala błąd
     private UserRepository userRepository;
 
     public UserServiceImpl(UserRepository userRepository) {

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Trip remove</title>
+</head>
+<body>
+<form th:action="@{/trips/delete}" method="post">
+    <label>id wycieczka do usunięcia
+    <input type="text" name="id"/>
+        <input type="submit" value="delete"/>
+    </label>
+</form>
+</body>
+</html>
