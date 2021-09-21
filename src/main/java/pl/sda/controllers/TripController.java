@@ -7,7 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.sda.model.Trip;
-import pl.sda.repository.TripRepository;
 import pl.sda.service.TripService;
 
 @Controller
@@ -52,5 +51,19 @@ public class TripController {
         return modelAndView;
     }
 
+    @GetMapping("/delete")
+    public String deleteTrip(Model model){
+        model.addAttribute("id", new String() );
+        log.info("Information acquired");
+        return "/trip_remove";
+    }
+
+    @PostMapping("/delete")
+    public String deletedTrip(@RequestParam("id") Integer id){
+        log.info("Acquired id: " + id);
+        tripService.delete(id);
+        log.info("removed");
+        return "redirect:/trips/all";
+    }
 
 }

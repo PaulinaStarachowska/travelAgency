@@ -5,9 +5,9 @@
     <title>Trip remove</title>
 </head>
 <body>
-<form th:action="@{/trips/delete}" method="post">
+<form th:action="@{/trips/delete}" method="post" th:object="${id}">
     <label>id wycieczka do usunięcia
-    <input type="text" name="id"/>
+    <input type="text" name="id" />
         <input type="submit" value="delete"/>
     </label>
 </form>
