@@ -21,9 +21,9 @@ public class User {
 
     private String firstName;
 
-    private String Lastname;
+    private String lastName;
 
-    private String userName;
+    private String username;
 
     private String password;
     private String type;
