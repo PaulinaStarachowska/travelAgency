@@ -36,7 +36,7 @@ public class TripController {
     }
 
     @PostMapping("/add")
-    public String addedTrip(@ModelAttribute Trip trip){
+    public String addedTrip(@ModelAttribute Trip trip) {
         log.info(trip.toString());
         log.info("Registered");
         tripService.save(trip);
@@ -52,14 +52,14 @@ public class TripController {
     }
 
     @GetMapping("/delete")
-    public String deleteTrip(Model model){
-        model.addAttribute("id", new String() );
+    public String deleteTrip(Model model) {
+        model.addAttribute("id", new String());
         log.info("Information acquired");
         return "/trip_remove";
     }
 
     @PostMapping("/delete")
-    public String deletedTrip(@RequestParam("id") Integer id){
+    public String deletedTrip(@RequestParam("id") Integer id) {
         log.info("Acquired id: " + id);
         tripService.delete(id);
         log.info("removed");
