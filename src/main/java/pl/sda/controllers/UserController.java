@@ -39,6 +39,12 @@ public class UserController {
         log.info("User saved successfully");
         return  "redirect:/users/" + user.getId();
     }
+    @GetMapping("/all")
+    public ModelAndView userList() {
+        ModelAndView modelAndView = new ModelAndView("user_list"); //nazwa widoku .html
+        modelAndView.addObject("users", userService.getAll());
+        return modelAndView;
+    }
 }
 
 
