@@ -9,13 +9,11 @@ import pl.sda.service.UserService;
 
 @Controller
 public class UserController {
-
     private final UserService userService;
 
     public UserController(UserService userService) {
         this.userService = userService;
     }
-
     @GetMapping("user/{userId}")
     public ModelAndView userPanel(@PathVariable Integer userId) {
         ModelAndView modelAndView = new ModelAndView("user_panel");
