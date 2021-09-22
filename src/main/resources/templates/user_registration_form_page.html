@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage</title>
+</head>
+<body>
+<form method="post" autocomplete="off" th:action="@{/users/register}" th:object="${user}">
+    <div class="container">
+
+        <h1>Register</h1>
+        <p>Please fill in this form to create an account.</p>
+        <hr>
+        <div>
+            <label><b>First Name</b><input type="text" placeholder="Enter First Name"
+                                           th:field="*{firstName}"></label>
+        </div>
+        <div>
+            <label><b>Last Name</b><input type="text" placeholder="Enter First Name"
+                                          th:field="*{lastName}"></label>
+        </div>
+        <div>
+            <label><b>User Name</b><input type="text" placeholder="Enter User Name"
+                                          th:field="*{username}"></label>
+        </div>
+        <div>
+            <label><b>Password</b><input type="text" placeholder="Enter Password"
+                                         th:field="*{password}"></label>
+        </div>
+        <div>
+            <label><b>Type</b><input type="text"
+                                     th:field="*{type}"></label>
+        </div>
+
+        <button type="submit" class="registerbtn">Register</button>
+    </div>
+
+    <div class="container signin">
+        <p>Already have an account? <a href="#">Sign in</a>.</p>
+    </div>
+</form>
+</body>
+</html>
