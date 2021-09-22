@@ -65,5 +65,11 @@ public class TripController {
         log.info("removed");
         return "redirect:/trips/all";
     }
+    @GetMapping("/mainpage")
+    public ModelAndView mainpage() {
+        ModelAndView modelAndView = new ModelAndView("mainpage"); //nazwa widoku .html
+        return modelAndView;
+    }
+
 
 }
