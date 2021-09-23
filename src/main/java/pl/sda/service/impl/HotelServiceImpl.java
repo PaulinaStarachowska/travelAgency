@@ -1,11 +1,13 @@
 package pl.sda.service.impl;
 
+import org.springframework.stereotype.Service;
 import pl.sda.model.Hotel;
 import pl.sda.repository.HotelRepository;
 import pl.sda.service.HotelService;
 
 import java.util.List;
 
+@Service
 public class HotelServiceImpl implements HotelService {
 
     private HotelRepository hotelRepository;
