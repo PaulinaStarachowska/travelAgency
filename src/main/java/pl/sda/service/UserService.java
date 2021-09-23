@@ -1,6 +1,5 @@
 package pl.sda.service;
 
-import pl.sda.model.Trip;
 import pl.sda.model.User;
 
 import java.util.List;

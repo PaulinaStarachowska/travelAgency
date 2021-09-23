@@ -4,10 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.math.BigDecimal;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,12 +21,14 @@ public class User {
 
     private String lastName;
 
+    @Column(unique = true)
     private String username;
 
     private String password;
-    private String type;
 
-    // i tu zakładam foreginkey w przyszłości, do tripa z @ One to many ?
+    private Role userType;
+
+    private BigDecimal moneyAmount;
 
 
 }
