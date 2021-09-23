@@ -1,10 +1,22 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Trip - form</title>
 </head>
 <body>
-
+<form method="post" autocomplete="off" th:object="${hotel}">
+    <div>
+        <label>Kraj: <input type="text" th:field="*{hotelCountry}"></label>
+    </div>
+    <div>
+        <label>Miasto: <input type="text" th:field="*{hotelCity}"></label>
+    </div>
+    <div>
+        <label>Hotel: <input type="text" th:field="*{hotelName}"></label>
+    </div>
+       <input type="submit" value="Zatwierdź">
+</form>
 </body>
 </html>
