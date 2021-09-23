@@ -1,12 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Hotel page</title>
 </head>
 <body>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Nazwa Hotelu</th>
+        <th>Kraj</th>
+        <th>Miasto</th>
+    </tr>
+    </thead>
+    <tbody>
+    <td th:text="${hotel.id}"></td>
+    <td th:text="${hotel.hotelName}"></td>
+    <td th:text="${hotel.hotelCountry}"></td>
+    <td th:text="${hotel.hotelCity}"></td>
+    </tbody>
+</table>
 
 </body>
 </html>
-
-<!--tutaj trzeba pomyslec czy chcemy tak samo jak tripa wyswietlac oddzielnie hotel-->
