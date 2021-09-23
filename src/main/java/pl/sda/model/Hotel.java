@@ -23,7 +23,5 @@ public class Hotel {
     private String hotelCountry;
     private String hotelCity;
 
-//    public void setHotelName (String hotelName){this.hotelName=hotelName;}
-//    public void setHotelCountry (String hotelCountry){this.hotelCountry=hotelCountry;}
-//    public void setHotelCity (String hotelCity){this.hotelCity=hotelCity;}
+
 }

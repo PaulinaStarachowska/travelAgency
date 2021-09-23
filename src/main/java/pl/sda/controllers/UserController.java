@@ -45,6 +45,21 @@ public class UserController {
         modelAndView.addObject("users", userService.getAll());
         return modelAndView;
     }
+
+    @GetMapping("/delete")
+    public String deleteUser(Model model) {
+        model.addAttribute("id", new String());
+        log.info("Information acquired");
+        return "/user_remove";
+    }
+
+    @PostMapping("/delete")
+    public String deletedUser(@RequestParam("id") Integer id) {
+        log.info("Acquired id: " + id);
+        userService.delete(id);
+        log.info("removed");
+        return "redirect:/users/all";
+    }
 }
 
 
