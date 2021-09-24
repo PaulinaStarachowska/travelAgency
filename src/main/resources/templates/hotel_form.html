@@ -2,10 +2,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <th:block th:replace="fragments/general.html :: head-tags"></th:block>
     <title>Trip - form</title>
 </head>
+
 <body>
+<nav th:replace="fragments/general.html :: navigation-bar"></nav>
 <form method="post" autocomplete="off" th:object="${hotel}">
     <div>
         <label>Kraj: <input type="text" th:field="*{hotelCountry}"></label>

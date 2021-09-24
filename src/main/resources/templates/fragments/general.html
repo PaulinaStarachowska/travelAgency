@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title></title>
+    <th:block th:fragment="head-tags">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+              crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+                crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    </th:block>
+</head>
+<body>
+<nav th:fragment="navigation-bar" class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" th:href="@{/}">travelAgency</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/trips/list}"><i class="bi-book"></i> Wycieczki</a>
+                </li>
+                <li sec:authorize="isAuthenticated()" class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-bs-toggle="dropdown">
+                        <i class="bi-plus-square"></i> Utwórz wycieczkę
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" th:href="@{/trips/add}">Wycieczka</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form sec:authorize="isAnonymous()" class="d-md-flex" th:action="@{/}" method="post" autocomplete="off">
+                <label class="visually-hidden" for="login">Login</label>
+                <input class="form-control me-1" name="username" type="text" placeholder="login" id="login">
+                <label class="visually-hidden" for="password">Hasło</label>
+                <input class="form-control me-1" name="password" type="password" placeholder="hasło" id="password">
+                <button class="btn btn-outline-primary me-1" type="submit">Zaloguj</button>
+                <a th:href="@{/users/register}" class="btn btn-outline-success">Zarejestruj</a>
+            </form>
+            <div sec:authorize="isAuthenticated()" class="d-flex align-items-center">
+                <div class="me-2">Zalogowano jako: <strong sec:authentication="name"></strong></div>
+                <form method="post" th:action="@{/logout}">
+                    <input type="submit" value="Wyloguj" class="btn btn-outline-primary">
+                </form>
+            </div>
+        </div>
+    </div>
+</nav>
+</body>
+</html>

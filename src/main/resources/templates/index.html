@@ -2,10 +2,11 @@
 <html lang="pl" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" xmlns="http://www.w3.org/1999/html">
 <head>
-    <meta charset="UTF-8">
+    <th:block th:replace="fragments/general.html :: head-tags"></th:block>
     <title>Login page</title>
 </head>
 <body>
+<nav th:replace="fragments/general.html :: navigation-bar"></nav>
 <h1>Zaloguj się</h1>
 <form sec:authorize="isAnonymous()" autocomplete="off" method="post" th:action="@{/}">
     <div>

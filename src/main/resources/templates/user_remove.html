@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <th:block th:replace="fragments/general.html :: head-tags"></th:block>
     <title>Trip remove</title>
 </head>
 <body>
+<nav th:fragment="navigation-bar" class="navbar navbar-expand-lg navbar-light bg-light">
 <form th:action="@{/users/delete}" method="post" th:object="${id}">
     <label>id user do usunięcia
         <input type="text" name="id" />
