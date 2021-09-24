@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Login page</title>
+</head>
+<body>
+<h1>Zaloguj się</h1>
+<form sec:authorize="isAnonymous()" autocomplete="off" method="post" th:action="@{/}">
+    <div>
+        <label>
+            Nazwa użytkownika:
+            <input type="text" name="username">
+        </label>
+    </div>
+    <div>
+        <label>
+            Hasło:
+            <input type="password" name="password">
+        </label>
+    </div>
+    <input type="submit" value="Zaloguj">
+</form>
+<div sec:authorize="isAuthenticated()">
+    Zalogowano
+</div>
+<div sec:authentication="name">
+</div>
+
+<form method="post" th:action="@{/logout}">
+    <input type="submit" value="Wyloguj">
+</form>
+</body>
+</html>

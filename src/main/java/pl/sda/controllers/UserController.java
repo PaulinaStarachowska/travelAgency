@@ -1,12 +1,20 @@
 package pl.sda.controllers;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import pl.sda.model.Role;
 import pl.sda.model.User;
 import pl.sda.service.UserService;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 
 @Controller
@@ -35,6 +43,8 @@ public class UserController {
     @PostMapping("/register")
     public String addedUser(@ModelAttribute User user){
         log.info(user.toString());
+        userService.encodePassword(user);
+        user.setUserType(Role.ADMIN);
         userService.save(user);
         log.info("User saved successfully");
         return  "redirect:/users/" + user.getId();
@@ -60,6 +70,17 @@ public class UserController {
         log.info("removed");
         return "redirect:/users/all";
     }
+
+//    @GetMapping("/logout")
+//    public String logout(HttpServletRequest request, HttpServletResponse response){
+//        final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//
+//        if (authentication != null){
+//            new SecurityContextLogoutHandler().logout(request,response,authentication);
+//        }
+//
+//        return "redirect:/index";
+//    }
 }
 
 

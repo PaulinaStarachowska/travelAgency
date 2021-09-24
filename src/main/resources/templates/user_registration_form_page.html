@@ -28,9 +28,14 @@
                                          th:field="*{password}"></label>
         </div>
         <div>
-            <label><b>Type</b><input type="text"
-                                     th:field="*{type}"></label>
+            <label>User type
+                <select th:field="*{userType}">
+                    <option value="ADMIN">Admin</option>
+                    <option value="USER">User</option>
+
+                </select></label>
         </div>
+
 
         <button type="submit" class="registerbtn">Register</button>
     </div>

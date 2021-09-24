@@ -1,7 +1,9 @@
 package pl.sda.service.impl;
 
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import pl.sda.model.Trip;
 import pl.sda.model.User;
 import pl.sda.repository.UserRepository;
 import pl.sda.service.UserService;
@@ -11,10 +13,12 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -36,5 +40,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public void delete(Integer id) {
         userRepository.deleteById(id);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return  userRepository.findByUsername(username)
+                .orElseThrow(()-> new UsernameNotFoundException("No username found " + username));
+    }
+
+    @Override
+    public void encodePassword(User user) {
+        String encodedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encodedPassword);
     }
 }
