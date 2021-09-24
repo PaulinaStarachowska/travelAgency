@@ -6,7 +6,7 @@
     <title>Trip - form</title>
 </head>
 <body>
-<form method="post" autocomplete="off" th:object="${hotel}">
+<form method="post" autocomplete="off" th:action="@{/hotels/addHotel}"  th:object="${hotel}">
     <div>
         <label>Kraj: <input type="text" th:field="*{hotelCountry}"></label>
     </div>
