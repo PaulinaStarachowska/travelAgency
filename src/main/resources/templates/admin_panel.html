@@ -32,7 +32,10 @@ Logged as: <p sec:authentication="name"/>
                     <a class="nav-link active" aria-current="page" th:href="@{/hotels/addHotel}">Dodaj nowy hotel</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/logout}">Wyloguj</a>
+                    <form method="post" th:action="@{/logout}">
+                        <input type="submit" value="Wyloguj">
+                    </form>
+
                 </li>
             </ul>
         </div>

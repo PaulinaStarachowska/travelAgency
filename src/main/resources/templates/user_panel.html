@@ -21,7 +21,10 @@
                     <a class="nav-link active" aria-current="page" th:href="@{/trips/all}">Lista wszystkich wycieczek</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/logout}">Wyloguj</a>
+                    <form method="post" th:action="@{/logout}">
+                        <input type="submit" value="Wyloguj">
+                    </form>
+
                 </li>
             </ul>
         </div>
