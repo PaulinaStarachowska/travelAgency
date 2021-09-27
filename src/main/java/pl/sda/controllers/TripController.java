@@ -84,9 +84,10 @@ public class TripController {
     }
 
     @PostMapping("/buy/{tripId}")
-    public String boughtTrip(@AuthenticationPrincipal User user, @RequestParam("tripIdForm") String tripId, @RequestParam("value") Integer value) {
+    public String boughtTrip(@AuthenticationPrincipal User user,@PathVariable String tripId, @RequestParam("value") Integer value) {
        // tripService.buyTrip(user, trip);
         log.info(user + " " + tripService.getById(Integer.valueOf(tripId)));
+
         return "redirect:/trips/all";
     }
 

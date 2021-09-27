@@ -28,7 +28,8 @@
 
         <div class="user">
             <td class="col-lg-3 button-float-right">
-                <button type="button" class="btn btn-outline-success">Kup</button>
+                <a th:href="@{'/trips/' + ${trip.id}}" class="btn btn-outline-success">Zobacz</a>
+
             </td>
         </div>
     </tr>

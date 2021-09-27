@@ -28,7 +28,7 @@
         <td th:text="${trip.price}"></td>
         <div class="user">
             <td class="col-lg-3 button-float-right">
-                <button href="/trips/{tripId}" type="button" class="btn btn-outline-success" role="button">Kup</button>
+                <a th:href="@{'/trips/buy/' + ${trip.id}}" class="btn btn-outline-success">Kup</a>
 
             </td>
         </div>
