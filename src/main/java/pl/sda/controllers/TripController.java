@@ -94,7 +94,9 @@ public class TripController {
         Trip trip = tripService.getById(tripId);
         if (trip.getSeatNumber() >= count) {
             trip.addParticipation(user, count);
+            trip.setSeatNumber(trip.getSeatNumber() - count);
             tripService.save(trip);
+
             return "redirect:/trips/trip_buy_success";
         } else {
             return "redirect:/trips/trip_buy_error";
