@@ -16,4 +16,5 @@ public interface TripService {
     void delete(Integer id);
 
     void buyTrip(User user, Trip trip);
+
 }

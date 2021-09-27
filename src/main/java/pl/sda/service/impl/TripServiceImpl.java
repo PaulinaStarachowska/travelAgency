@@ -42,4 +42,5 @@ public class TripServiceImpl implements TripService {
        tripRepository.save(trip);
 
     }
+
 }

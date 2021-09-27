@@ -4,9 +4,7 @@ package pl.sda.controllers;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -33,6 +31,7 @@ public class TripController {
         modelAndView.addObject("trips", tripService.getAll());
         return modelAndView;
     }
+
     @Secured("ROLE_ADMIN")
     @GetMapping("/add")
     public String addTrip(Model model) {
@@ -40,6 +39,7 @@ public class TripController {
         log.info("Information acquired ");
         return "/trip_form";
     }
+
     @Secured("ROLE_ADMIN")
     @PostMapping("/add")
     public String addedTrip(@ModelAttribute Trip trip) {
@@ -56,6 +56,7 @@ public class TripController {
         modelAndView.addObject("trip", tripService.getById(tripId));
         return modelAndView;
     }
+
     @Secured("ROLE_ADMIN")
     @GetMapping("/delete")
     public String deleteTrip(Model model) {
@@ -88,11 +89,16 @@ public class TripController {
     }
 
     @PostMapping("/buy/{tripId}")
-    public String boughtTrip(@AuthenticationPrincipal User user, @PathVariable String tripId, @RequestParam("value") Integer value) {
-        // tripService.buyTrip(user, trip);
-        log.info(user + " " + tripService.getById(Integer.valueOf(tripId)));
+    public String boughtTrip(@AuthenticationPrincipal User user, @PathVariable int tripId, @RequestParam("count") Integer count) {
 
-        return "redirect:/trips/all";
+        Trip trip = tripService.getById(tripId);
+        if (trip.getSeatNumber() >= count) {
+            trip.addParticipation(user, count);
+            tripService.save(trip);
+            return "redirect:/trips/all";
+        } else {
+            return "redirect:/trips/mainpage";
+        }
+
     }
-
 }

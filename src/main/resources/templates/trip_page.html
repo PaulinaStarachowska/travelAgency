@@ -16,6 +16,7 @@
         <th>Wylot</th>
         <th>Powrót</th>
         <th>Cena</th>
+        <th>Ilość miejsc</th>
     </tr>
     </thead>
     <tbody>
@@ -26,6 +27,7 @@
         <td th:text="${trip.onboarding}"></td>
         <td th:text="${trip.offboarding}"></td>
         <td th:text="${trip.price}"></td>
+        <td th:text="${trip.seatNumber}"></td>
         <div class="user">
             <td class="col-lg-3 button-float-right">
                 <a th:href="@{'/trips/buy/' + ${trip.id}}" class="btn btn-outline-success">Kup</a>

@@ -9,6 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
@@ -36,11 +37,15 @@ public class Trip {
 
     private BigDecimal price;
 
-    @OneToMany
-    private List<User> tripParticipants;
+    private int seatNumber;
 
-    public void Reservation(List<User> tripParticipants) {
-        this.tripParticipants = tripParticipants;
+    @ManyToMany
+    private List<User> tripParticipants = new ArrayList<>();
+
+    public void addParticipation (User user, int count){
+        for (int i = 0; i < count; i++) {
+            tripParticipants.add(user);
+        }
     }
 
 }
