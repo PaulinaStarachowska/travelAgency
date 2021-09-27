@@ -9,11 +9,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </head>
 <body>
-Logged as: <p sec:authentication="name"/>
+
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="navigation container">
         <a class="navbar-brand" href="#">PANEL ADMINISTRATORA</a>
+        <a class="navbar-brand" th:href="@{/trips/mainpage}">Strona Główna</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -43,6 +44,7 @@ Logged as: <p sec:authentication="name"/>
 
 
 </nav>
+Zalogowany jako: <p sec:authentication="name"/>
 
 <div class="admin details page">
 

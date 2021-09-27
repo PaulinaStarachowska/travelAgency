@@ -26,7 +26,10 @@
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/trips/all}"><i class="globe"></i> Wycieczki</a>
                 </li>
-                <li sec:authorize="isAuthenticated()" class="nav-item dropdown">
+                <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+                    <a class="nav-link" th:href="@{/admin/panel}"><i class="person-square"></i> Panel Administratora</a>
+                </li>
+                <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-bs-toggle="dropdown">
                         <i class="bi-plus-square"></i> Utwórz wycieczkę
