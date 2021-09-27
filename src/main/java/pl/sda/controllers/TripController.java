@@ -2,6 +2,8 @@ package pl.sda.controllers;
 
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -13,6 +15,7 @@ import pl.sda.model.Trip;
 import pl.sda.model.User;
 import pl.sda.service.TripService;
 
+@EnableGlobalMethodSecurity(securedEnabled = true)
 @Controller
 @RequestMapping("/trips")
 @Slf4j
@@ -30,14 +33,14 @@ public class TripController {
         modelAndView.addObject("trips", tripService.getAll());
         return modelAndView;
     }
-
+    @Secured("ROLE_ADMIN")
     @GetMapping("/add")
     public String addTrip(Model model) {
         model.addAttribute("trip", new Trip());
         log.info("Information acquired ");
         return "/trip_form";
     }
-
+    @Secured("ROLE_ADMIN")
     @PostMapping("/add")
     public String addedTrip(@ModelAttribute Trip trip) {
         log.info(trip.toString());
@@ -53,7 +56,7 @@ public class TripController {
         modelAndView.addObject("trip", tripService.getById(tripId));
         return modelAndView;
     }
-
+    @Secured("ROLE_ADMIN")
     @GetMapping("/delete")
     public String deleteTrip(Model model) {
         model.addAttribute("id", new String());
@@ -61,6 +64,7 @@ public class TripController {
         return "/trip_remove";
     }
 
+    @Secured("ROLE_ADMIN")
     @PostMapping("/delete")
     public String deletedTrip(@RequestParam("id") Integer id) {
         log.info("Acquired id: " + id);
@@ -84,8 +88,8 @@ public class TripController {
     }
 
     @PostMapping("/buy/{tripId}")
-    public String boughtTrip(@AuthenticationPrincipal User user,@PathVariable String tripId, @RequestParam("value") Integer value) {
-       // tripService.buyTrip(user, trip);
+    public String boughtTrip(@AuthenticationPrincipal User user, @PathVariable String tripId, @RequestParam("value") Integer value) {
+        // tripService.buyTrip(user, trip);
         log.info(user + " " + tripService.getById(Integer.valueOf(tripId)));
 
         return "redirect:/trips/all";
