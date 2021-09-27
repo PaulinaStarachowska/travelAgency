@@ -2,6 +2,7 @@ package pl.sda.service.impl;
 
 import org.springframework.stereotype.Service;
 import pl.sda.model.Trip;
+import pl.sda.model.User;
 import pl.sda.repository.TripRepository;
 import pl.sda.service.TripService;
 
@@ -35,10 +36,10 @@ public class TripServiceImpl implements TripService {
         tripRepository.deleteById(id);
     }
 
+    @Override
+    public void buyTrip(User user, Trip trip) {
+       trip.getTripParticipants().add(user);
+       tripRepository.save(trip);
 
-
-
-
-
-
+    }
 }

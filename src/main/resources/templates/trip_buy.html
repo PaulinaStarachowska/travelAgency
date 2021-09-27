@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="fragments/general.html :: head-tags"></th:block>
+    <title>Trip buy</title>
+</head>
+<body>
+<nav th:replace="fragments/general.html :: navigation-bar"></nav>
+<form th:action="@{/trips/buy/{tripId}}" method="post" >
+    <label>ilosc miejsc wycieczki do wykupienia
+        <input type="text" th:text="${trip.id}" name="tripIdForm" disabled/>
+        <input type="number" name="value" />
+        <input type="submit" value="buy"/>
+    </label>
+</form>
+</body>
+</html>
