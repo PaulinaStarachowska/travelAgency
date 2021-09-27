@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <th:block th:replace="fragments/general.html :: head-tags"></th:block>
+  <title>Trip Buy Error</title>
+</head>
+<body>
+<nav th:replace="fragments/general.html :: navigation-bar"></nav>
+<table>
+  <thead>
+  <h1 class="mb-3">Błąd!</h1>
+  <h4 class="mb-3">Nie udało się zakupić wycieczki</h4>
+  </thead>
+  <tbody>
+  <td class="col-lg-3 button-float-right">
+    <a th:href="@{'/trips/mainpage'}" class="btn btn-outline-success">wróć na stronę główną</a>
+
+  </td>
+  </tbody>
+</table>
+
+</body>
+</html>

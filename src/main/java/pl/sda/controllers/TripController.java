@@ -95,10 +95,21 @@ public class TripController {
         if (trip.getSeatNumber() >= count) {
             trip.addParticipation(user, count);
             tripService.save(trip);
-            return "redirect:/trips/all";
+            return "redirect:/trips/trip_buy_success";
         } else {
-            return "redirect:/trips/mainpage";
+            return "redirect:/trips/trip_buy_error";
         }
 
+    }
+
+    @GetMapping("/trip_buy_error")
+    public ModelAndView trip_buy_error() {
+        ModelAndView modelAndView = new ModelAndView("trip_buy_error"); //nazwa widoku .html
+        return modelAndView;
+    }
+    @GetMapping("/trip_buy_success")
+    public ModelAndView trip_buy_success() {
+        ModelAndView modelAndView = new ModelAndView("trip_buy_success"); //nazwa widoku .html
+        return modelAndView;
     }
 }

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="fragments/general.html :: head-tags"></th:block>
+    <title>Trip Buy Success</title>
+</head>
+<body>
+<nav th:replace="fragments/general.html :: navigation-bar"></nav>
+<table>
+    <thead>
+    <h1 class="mb-3">Dziękujemy!</h1>
+    <h4 class="mb-3">Udało Ci się zakupić wycieczkę!</h4>
+    </thead>
+    <tbody>
+    <td class="col-lg-3 button-float-right">
+        <a th:href="@{'/trips/all'}" class="btn btn-outline-success">wróć do listy wycieczek</a>
+
+    </td>
+    </tbody>
+</table>
+
+</body>
+</html>
